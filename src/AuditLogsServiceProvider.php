@@ -13,7 +13,6 @@ class AuditLogsServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(__DIR__.'/../config/auditlogs.php', 'auditlogs');
-        $this->mergeConfigFrom(__DIR__.'/../config/auditlogs.php', 'auditlogs');
 
         $this->app->singleton('auditlogs', function () {
             return new AuditLogs();
