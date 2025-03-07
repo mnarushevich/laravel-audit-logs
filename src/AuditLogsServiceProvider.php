@@ -13,6 +13,7 @@ class AuditLogsServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(__DIR__.'/../config/auditlogs.php', 'auditlogs');
+        $this->mergeConfigFrom(__DIR__.'/../config/auditlogs.php', 'auditlogs');
 
         $this->app->singleton('auditlogs', function () {
             return new AuditLogs();
@@ -21,12 +22,12 @@ class AuditLogsServiceProvider extends ServiceProvider
         $this->app->singleton(DynamoDbClient::class,  function () {
             return new DynamoDbClient([
                 'version' => 'latest',
-                'region' => Config::get('aws.dynamodb.region'),
+                'region' => Config::get('auditlogs.dynamodb.region'),
                 'credentials' => [
-                    'key' => Config::get('aws.dynamodb.key'),
-                    'secret' => Config::get('aws.dynamodb.secret'),
+                    'key' => Config::get('auditlogs.dynamodb.key'),
+                    'secret' => Config::get('auditlogs.dynamodb.secret'),
                 ],
-                'endpoint' => Config::get('aws.dynamodb.endpoint'),
+                'endpoint' => Config::get('auditlogs.dynamodb.endpoint'),
             ]);
         });
     }
@@ -35,6 +36,6 @@ class AuditLogsServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/../config/auditlogs.php' => config_path('auditlogs.php'),
-        ], 'config');
+        ]);
     }
 }
