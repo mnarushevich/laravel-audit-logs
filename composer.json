@@ -19,7 +19,7 @@
     },
     "require": {
         "php": ">=8.4",
-        "illuminate/support": "^v12.1.1",
+        "illuminate/support": "^10.0 || ^12.1",
         "aws/aws-sdk-php": "^3.342"
     }
 }
