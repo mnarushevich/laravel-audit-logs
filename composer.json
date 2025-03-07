@@ -1,0 +1,25 @@
+{
+    "name": "mnarushevich/laravel-audit-logs",
+    "description": "A Laravel package for audit logging",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "MNarushevich\\AuditLogs\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MNarushevich\\AuditLogs\\AuditLogsServiceProvider"
+            ],
+            "aliases": {
+                "AuditLogs": "MNarushevich\\AuditLogs\\Facades\\AuditLogs"
+            }
+        }
+    },
+    "require": {
+        "php": ">=8.4",
+        "illuminate/support": "^v12.1.1",
+        "aws/aws-sdk-php": "^3.342"
+    }
+}

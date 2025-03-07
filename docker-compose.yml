@@ -1,0 +1,21 @@
+services:
+    audit_logs:
+        build:
+            context: './docker'
+            dockerfile: Dockerfile
+            args:
+                WWWGROUP: '${WWWGROUP}'
+        extra_hosts:
+            - 'host.docker.internal:host-gateway'
+        container_name: audit_logs
+        volumes:
+            - '.:/var/www/html'
+        networks:
+            - sbc
+            - sbs-shared
+
+networks:
+    sbs-shared:
+        external: true
+    sbc:
+        driver: bridge
