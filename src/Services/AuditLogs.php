@@ -1,6 +1,6 @@
 <?php
 
-namespace Mnarushevich\AuditLogs;
+namespace Mnarushevich\AuditLogs\Services;
 
 class AuditLogs
 {
