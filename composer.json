@@ -17,11 +17,6 @@
             }
         }
     },
-    "scripts": {
-        "post-install-cmd": [
-            "php artisan migrate --path=database/migrations"
-        ]
-    },
     "require": {
         "php": ">=8.4",
         "illuminate/support": "^10.0 || ^12.1",
