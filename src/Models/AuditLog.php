@@ -16,7 +16,9 @@ class AuditLog extends Model
     protected $fillable = [
         'auditable_type',
         'auditable_id',
+        'auditable_uuid',
         'user_id',
+        'user_uuid',
         'event',
         'old_values',
         'new_values',
