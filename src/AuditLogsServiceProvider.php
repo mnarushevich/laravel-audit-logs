@@ -7,6 +7,7 @@ namespace MNarushevich\AuditLogs;
 use Aws\DynamoDb\DynamoDbClient;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
+use Mnarushevich\AuditLogs\Services\AuditLogs;
 
 class AuditLogsServiceProvider extends ServiceProvider
 {
@@ -35,6 +36,9 @@ class AuditLogsServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/../config/auditlogs.php' => config_path('auditlogs.php'),
+        ]);
+        $this->publishesMigrations([
+            __DIR__.'/../database/migrations' => database_path('migrations'),
         ]);
     }
 }

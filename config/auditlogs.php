@@ -5,6 +5,7 @@ declare(strict_types=1);
 return [
     'enabled'   => env('AUDIT_LOGS_ENABLED', true),
     'log_table' => env('AUDIT_LOGS_TABLE', 'AuditLogs'),
+    'log_driver' => env('AUDIT_LOGS_TABLE', 'AuditLogs'),
     'dynamodb' => [
         'endpoint' => env('DYNAMODB_ENDPOINT', 'http://localstack:4566'),
         'key' => env('AWS_ACCESS_KEY_ID'),
