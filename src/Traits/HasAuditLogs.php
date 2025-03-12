@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace MNarushevich\AuditLogs\Traits;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Request;
 use MNarushevich\AuditLogs\Models\AuditLog;
 
@@ -31,14 +33,14 @@ trait HasAuditLogs
     protected static function logChange(
         Model $model,
         string $event,
-        $oldValues = null,
-        $newValues = null
+        ?array $oldValues = null,
+        ?array $newValues = null
     ): void {
         if ($oldValues) {
-            $oldValues = collect($oldValues)->except(['password', 'remember_token']);
+            $oldValues = self::getModelData($model, $oldValues);
         }
         if ($newValues) {
-            $newValues = collect($newValues)->except(['password', 'remember_token']);
+            $newValues = self::getModelData($model, $newValues);
         }
 
         $auditableId = $model->getKey();
@@ -59,5 +61,10 @@ trait HasAuditLogs
             'ip_address'     => Request::ip(),
             'user_agent'     => Request::userAgent(),
         ]);
+    }
+
+    private static function getModelData(Model $model, array $data): Collection
+    {
+        return collect($data)->except(array_merge(Config::get('auditlogs.exclude_fields'), $model->getHidden()));
     }
 }
