@@ -36,7 +36,7 @@ class AuditLogsServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/../config/auditlogs.php' => config_path('auditlogs.php'),
-        ], 'configs');
+        ], 'config');
         $this->publishesMigrations([
             __DIR__.'/../database/migrations' => database_path('migrations'),
         ], 'migrations');

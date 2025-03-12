@@ -9,7 +9,7 @@ composer require mnarushevich/laravel-audit-logs
 ```bash
 php artisan vendor:publish --provider="MNarushevich\AuditLogs\AuditLogsServiceProvider" --tag="migrations"
 ```
-3. Publish config:
+3. Publish config (optional):
 ```bash
 php artisan vendor:publish --provider="MNarushevich\AuditLogs\AuditLogsServiceProvider" --tag="config"
 ```
