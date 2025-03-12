@@ -14,8 +14,10 @@ return new class extends Migration {
         Schema::create('audit_logs', function (Blueprint $table) {
             $table->id();
             $table->string('auditable_type');
-            $table->unsignedBigInteger('auditable_id');
+            $table->uuid('auditable_uuid')->nullable();
+            $table->unsignedBigInteger('auditable_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
+            $table->uuid('user_uuid')->nullable();
             $table->enum('event', ['created', 'updated', 'deleted', 'restored']);
             $table->json('old_values')->nullable();
             $table->json('new_values')->nullable();
