@@ -1,6 +1,6 @@
 # laravel-audit-logs
 
-
+### How to use
 1. Install the package via composer:
 ```bash
 composer require mnarushevich/laravel-audit-logs
@@ -16,4 +16,8 @@ php artisan vendor:publish --provider="MNarushevich\AuditLogs\AuditLogsServicePr
 4. Run migrations:
 ```bash
 php artisan migrate
+```
+5. In your model use `MNarushevich\AuditLogs\Traits\HasAuditLogs` trait:
+```php
+use MNarushevich\AuditLogs\Traits\HasAuditLogs;
 ```

@@ -17,6 +17,10 @@ trait HasAuditLogs
     {
         parent::boot();
 
+        if (Config::get('audit_logs.enabled') === false) {
+            return;
+        }
+
         static::creating(function (Model $model) {
             self::logChange($model, 'created', null, $model->getAttributes());
         });
@@ -65,6 +69,6 @@ trait HasAuditLogs
 
     private static function getModelData(Model $model, array $data): Collection
     {
-        return collect($data)->except(array_merge(Config::get('auditlogs.exclude_fields'), $model->getHidden()));
+        return collect($data)->except(array_merge(Config::get('audit_logs.exclude_fields'), $model->getHidden()));
     }
 }
