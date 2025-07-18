@@ -21,15 +21,15 @@ trait HasAuditLogs
             return;
         }
 
-        static::creating(function (Model $model) {
+        static::creating(function (Model $model): void {
             self::logChange($model, 'created', null, $model->getAttributes());
         });
 
-        static::updated(function (Model $model) {
+        static::updated(function (Model $model): void {
             self::logChange($model, 'updated', $model->getOriginal(), $model->getChanges());
         });
 
-        static::deleted(function (Model $user) {
+        static::deleted(function (Model $user): void {
             self::logChange($user, 'deleted', $user->getOriginal());
         });
     }
@@ -40,10 +40,11 @@ trait HasAuditLogs
         ?array $oldValues = null,
         ?array $newValues = null
     ): void {
-        if ($oldValues) {
+        if ($oldValues !== null && $oldValues !== []) {
             $oldValues = self::getModelData($model, $oldValues);
         }
-        if ($newValues) {
+
+        if ($newValues !== null && $newValues !== []) {
             $newValues = self::getModelData($model, $newValues);
         }
 
@@ -55,7 +56,7 @@ trait HasAuditLogs
         }
 
         AuditLog::create([
-            'auditable_type' => get_class($model),
+            'auditable_type' => $model::class,
             'auditable_uuid' => $auditableUUID,
             'auditable_id'   => $auditableId,
             'user_uuid'      => Auth::id(),

@@ -8,6 +8,7 @@ use Illuminate\Support\ServiceProvider;
 
 class AuditLogsServiceProvider extends ServiceProvider
 {
+    #[\Override]
     public function register(): void
     {
         $this->mergeConfigFrom(__DIR__.'/../config/audit_logs.php', 'audit_logs');
