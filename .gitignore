@@ -18,3 +18,4 @@ vendor
 .env.production
 .phpunit.result.cache
 var
+.history

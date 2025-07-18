@@ -21,5 +21,15 @@
         "php": ">=8.4",
         "illuminate/support": "^10.0 || ^12.1",
         "illuminate/database": "^12.1"
+    },
+    "require-dev": {
+        "rector/rector": "^2.1"
+    },
+    "scripts": {
+        "rector": "rector",
+        "test:rector": "rector --dry-run",
+        "test": [
+            "@test:rector"
+        ]
     }
 }
