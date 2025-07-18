@@ -29,8 +29,8 @@
     },
     "require-dev": {
         "rector/rector": "^2.1",
-        "pestphp/pest": "^2.0",
-        "pestphp/pest-plugin-laravel": "^2.0",
+        "pestphp/pest": "^3.0",
+        "pestphp/pest-plugin-laravel": "^3.0",
         "orchestra/testbench": "^9.0 || ^10.0"
     },
     "scripts": {
