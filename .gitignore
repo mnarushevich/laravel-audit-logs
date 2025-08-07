@@ -3,7 +3,7 @@ data
 .idea
 .vscode
 logs
-
+build
 .phpunit.cache
 node_modules
 bin

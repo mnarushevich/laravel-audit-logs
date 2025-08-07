@@ -21,7 +21,7 @@ trait HasAuditLogs
             return;
         }
 
-        static::creating(function (Model $model): void {
+        static::created(function (Model $model): void {
             self::logChange($model, 'created', null, $model->getAttributes());
         });
 
