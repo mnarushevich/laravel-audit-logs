@@ -24,6 +24,7 @@ return new class extends Migration {
             $table->string('ip_address', 45)->nullable();
             $table->text('user_agent')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             // Indexes for fast lookup
             $table->index(['auditable_type', 'auditable_id']);
