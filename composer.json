@@ -23,20 +23,20 @@
         }
     },
     "require": {
-        "php": "^8.2",
-        "illuminate/support": "^11.0 || ^12.0",
-        "illuminate/database": "^11.0 || ^12.0"
+        "php": "^8.5",
+        "illuminate/support": "^12.0 || ^13.0",
+        "illuminate/database": "^12.0 || ^13.0"
     },
     "require-dev": {
-        "rector/rector": "^2.1",
-        "pestphp/pest": "^3.0",
-        "pestphp/pest-plugin-laravel": "^3.0",
+        "rector/rector": "^2.4",
+        "pestphp/pest": "^4.7",
+        "pestphp/pest-plugin-laravel": "^4.1",
         "orchestra/testbench": "^9.0 || ^10.0"
     },
     "scripts": {
         "rector": "rector",
         "test:rector": "rector --dry-run",
-        "test:unit": "pest --colors=always --stop-on-failure",
+        "test:unit": "pest --colors=always --stop-on-failure --no-coverage",
         "test": [
             "@test:rector",
             "@test:unit"
